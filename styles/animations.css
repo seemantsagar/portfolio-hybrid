@@ -1,0 +1,374 @@
+/* 
+ * MCP Operation: write_file for animations [2]
+ * Portfolio Hybrid - Animations CSS
+ * Blending Charles Bruyerre's Hybrid Genre Framework with Tim Quirino's Sci-Fi Visual Narrative
+ */
+
+/* Glyph Animations - Living Document Effect */
+.glyph-container {
+  animation: pulse 4s infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 5px 0 var(--glyph-emissive);
+  }
+  50% {
+    box-shadow: 0 0 15px 5px var(--glyph-emissive);
+  }
+  100% {
+    box-shadow: 0 0 5px 0 var(--glyph-emissive);
+  }
+}
+
+/* Progress Ring Animation */
+.skill-ring[data-percentage="88"] .progress-ring-circle {
+  stroke-dashoffset: calc(283 - (283 * 88) / 100);
+  animation: progress-88 3s ease forwards;
+}
+
+.skill-ring[data-percentage="92"] .progress-ring-circle {
+  stroke-dashoffset: calc(283 - (283 * 92) / 100);
+  animation: progress-92 3s ease forwards;
+}
+
+.skill-ring[data-percentage="78"] .progress-ring-circle {
+  stroke-dashoffset: calc(283 - (283 * 78) / 100);
+  animation: progress-78 3s ease forwards;
+}
+
+@keyframes progress-88 {
+  from {
+    stroke-dashoffset: 283;
+  }
+  to {
+    stroke-dashoffset: calc(283 - (283 * 88) / 100);
+  }
+}
+
+@keyframes progress-92 {
+  from {
+    stroke-dashoffset: 283;
+  }
+  to {
+    stroke-dashoffset: calc(283 - (283 * 92) / 100);
+  }
+}
+
+@keyframes progress-78 {
+  from {
+    stroke-dashoffset: 283;
+  }
+  to {
+    stroke-dashoffset: calc(283 - (283 * 78) / 100);
+  }
+}
+
+/* Hover Effects for Project Entries */
+.project-entry::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+  z-index: 1;
+}
+
+.project-entry:hover::before {
+  transform: translateX(100%);
+  transition: transform 0.8s ease;
+}
+
+/* Animated Field Visualizations for Form Fields */
+.field-visualization {
+  position: relative;
+}
+
+.field-visualization::before,
+.field-visualization::after {
+  content: '';
+  position: absolute;
+  background-color: var(--accent-blue);
+  opacity: 0.3;
+  border-radius: 50%;
+}
+
+.field-visualization::before {
+  width: 15px;
+  height: 15px;
+  animation: float 3s infinite alternate ease-in-out;
+}
+
+.field-visualization::after {
+  width: 8px;
+  height: 8px;
+  animation: float 2s infinite alternate-reverse ease-in-out;
+}
+
+.textarea-viz::before,
+.textarea-viz::after {
+  background-color: var(--spice-orange);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  100% {
+    transform: translateY(5px) translateX(-5px);
+  }
+}
+
+/* Living Document Animations - Animated Glyphs */
+.footer-glyph {
+  animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Scroll-triggered Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Particle Effects */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.7;
+  background: radial-gradient(circle, var(--spice-orange), transparent);
+  filter: blur(2px);
+  animation: float-random 8s infinite alternate ease-in-out;
+}
+
+@keyframes float-random {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(var(--random-x1, 10px), var(--random-y1, 10px));
+  }
+  50% {
+    transform: translate(var(--random-x2, -15px), var(--random-y2, 5px));
+  }
+  75% {
+    transform: translate(var(--random-x3, 5px), var(--random-y3, -15px));
+  }
+  100% {
+    transform: translate(var(--random-x4, -5px), var(--random-y4, -5px));
+  }
+}
+
+/* Quantum Form Field Animations */
+.form-field input:focus + .field-visualization,
+.form-field textarea:focus + .field-visualization {
+  animation: quantum-flicker 2s infinite alternate ease-in-out;
+}
+
+@keyframes quantum-flicker {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  25% {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+  75% {
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+}
+
+/* CTA Button Animation - Voice Effect */
+.cta-primary:hover::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-50%);
+  animation: voice-wave 1.5s infinite linear;
+}
+
+@keyframes voice-wave {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%) scaleX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-50%) scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50%) scaleX(0);
+  }
+}
+
+/* Planet Orbital Alignment Effects */
+.planet-alignment::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid var(--accent-blue);
+  transform: translate(-50%, -50%);
+  animation: orbit-pulse 5s infinite alternate;
+}
+
+@keyframes orbit-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.3;
+  }
+}
+
+/* Hologram Scanline Effect */
+.hologram-content::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    rgba(100, 255, 218, 0.1) 50%,
+    transparent 100%);
+  background-size: 100% 4px;
+  animation: scanline 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* Loading Indicator for Planet Renderer */
+.loading-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: var(--accent-blue);
+  border-bottom-color: var(--spice-orange);
+  animation: spin 2s linear infinite;
+}
+
+.loading-indicator::before,
+.loading-indicator::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid transparent;
+}
+
+.loading-indicator::before {
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border-top-color: var(--ancient-gold);
+  border-bottom-color: var(--mystic-purple);
+  animation: spin 3s linear infinite;
+}
+
+.loading-indicator::after {
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border-top-color: var(--spice-orange);
+  border-bottom-color: var(--accent-blue);
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Fallback Animation for Legacy Browsers */
+@supports not (animation-timeline: scroll()) {
+  .lore-container.visible {
+    animation: fade-in 0.8s ease forwards;
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Accessibility Considerations */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001s !important;
+  }
+}

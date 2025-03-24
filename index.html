@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid Portfolio | Dune-Inspired Interface</title>
+    <meta name="description" content="A hybrid sci-fi/fantasy portfolio blending Charles Bruyerre's Hybrid Genre Framework with Tim Quirino's Sci-Fi Visual Narrative">
+    
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="Imperial Design Archives | Hybrid Portfolio">
+    <meta property="og:description" content="A hybrid sci-fi/fantasy portfolio blending Dune-inspired interface mechanics with living document aesthetics">
+    <meta property="og:image" content="https://yourdomain.com/assets/social-preview.jpg">
+    <meta property="og:url" content="https://yourdomain.com">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Favicon and App Manifest -->
+    <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="assets/site.webmanifest">
+    <meta name="theme-color" content="#0a192f">
+    <!-- MCP Operation: write_file for core structure [1] -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <!-- Modern browsers only - Error boundaries in JS will handle fallbacks -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <script src="components/planet-renderer.js" defer></script>
+    <script src="components/spice-particles.js" defer></script>
+    <script src="components/interactions.js" defer></script>
+    <script src="assets/js/performance.js" defer></script>
+</head>
+<body>
+    <!-- Performance metrics container for Lighthouse scoring -->
+    <div id="metrics-container" aria-hidden="true"></div>
+    
+    <header class="imperial-header">
+        <nav class="navigation-console">
+            <div class="logo-glyph">
+                <span class="glyph-container" aria-hidden="true"></span>
+                <h1>Imperial Archives</h1>
+            </div>
+            <ul class="nav-controls">
+                <li><a href="#hero" data-scroll="hero">Homeworld</a></li>
+                <li><a href="#projects" data-scroll="projects">Artifacts</a></li>
+                <li><a href="#skills" data-scroll="skills">Abilities</a></li>
+                <li><a href="#contact" data-scroll="contact">Transmit</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero: Volumetric planet render with orbital paths -->
+        <section id="hero" class="hero-section">
+            <div class="planet-container">
+                <canvas id="planet-canvas" aria-label="Interactive 3D planet with two moons in orbit"></canvas>
+            </div>
+            <div class="hero-content">
+                <h2 class="title-primary">Imperial Design Archives</h2>
+                <p class="subtitle-ornithopter">Interfacing with the spice of creation</p>
+                <div class="cta-container">
+                    <button id="voice-cta" class="cta-primary">Harness the Voice</button>
+                    <div class="orbital-indicator">
+                        <span class="planet-alignment" aria-hidden="true"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects: Hover-activated holotable entries -->
+        <section id="projects" class="projects-section">
+            <h2 class="section-title">Artifacts of Creation</h2>
+            <div class="holotable-container">
+                <div class="holotable-surface" aria-label="Interactive holographic table showing three projects">
+                    <div class="holotable-grid">
+                        <!-- Project 1 -->
+                        <article class="project-entry" data-project-id="arrakis-ui">
+                            <div class="project-hologram">
+                                <div class="hologram-content"></div>
+                            </div>
+                            <div class="project-details">
+                                <h3>Arrakis UI Framework</h3>
+                                <ul class="tech-list">
+                                    <li>Spline</li>
+                                    <li>Three.js</li>
+                                    <li>Quantum CSS</li>
+                                </ul>
+                                <p>House Atreides-approved interface patterns</p>
+                                <a href="#" class="project-link">Access Archives</a>
+                            </div>
+                        </article>
+                        
+                        <!-- Project 2 -->
+                        <article class="project-entry" data-project-id="thopter-patterns">
+                            <div class="project-hologram">
+                                <div class="hologram-content"></div>
+                            </div>
+                            <div class="project-details">
+                                <h3>Ornithopter Flight Simulator</h3>
+                                <ul class="tech-list">
+                                    <li>WebGL</li>
+                                    <li>Fluid Dynamics</li>
+                                    <li>Framer Motion</li>
+                                </ul>
+                                <p>Interactive flight pattern visualization with desert adaptation protocols</p>
+                                <a href="#" class="project-link">Access Archives</a>
+                            </div>
+                        </article>
+                        
+                        <!-- Project 3 -->
+                        <article class="project-entry" data-project-id="bene-gesserit">
+                            <div class="project-hologram">
+                                <div class="hologram-content"></div>
+                            </div>
+                            <div class="project-details">
+                                <h3>Bene Gesserit Insight Portal</h3>
+                                <ul class="tech-list">
+                                    <li>DuneScript</li>
+                                    <li>Shai-Hulud API</li>
+                                    <li>Bene Gesserit UX</li>
+                                </ul>
+                                <p>Prescient user experience with deep pattern recognition</p>
+                                <a href="#" class="project-link">Access Archives</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills: Animated progress rings -->
+        <section id="skills" class="skills-section">
+            <h2 class="section-title">Abilities & Proficiencies</h2>
+            <div class="skills-container">
+                <div class="skill-ring-container">
+                    <!-- Skill 1 -->
+                    <div class="skill-item">
+                        <div class="skill-ring" data-percentage="88" aria-label="Spice Interface Design: 88% proficiency">
+                            <svg viewBox="0 0 100 100" class="progress-ring">
+                                <circle class="progress-ring-circle-bg" cx="50" cy="50" r="45"></circle>
+                                <circle class="progress-ring-circle" cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <div class="skill-percentage">88%</div>
+                        </div>
+                        <h3 class="skill-title">Spice Interface Design</h3>
+                    </div>
+                    
+                    <!-- Skill 2 -->
+                    <div class="skill-item">
+                        <div class="skill-ring" data-percentage="92" aria-label="Ornithopter Flight Patterns: 92% proficiency">
+                            <svg viewBox="0 0 100 100" class="progress-ring">
+                                <circle class="progress-ring-circle-bg" cx="50" cy="50" r="45"></circle>
+                                <circle class="progress-ring-circle" cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <div class="skill-percentage">92%</div>
+                        </div>
+                        <h3 class="skill-title">Ornithopter Flight Patterns</h3>
+                    </div>
+                    
+                    <!-- Skill 3 -->
+                    <div class="skill-item">
+                        <div class="skill-ring" data-percentage="78" aria-label="Quantum Data Folding: 78% proficiency">
+                            <svg viewBox="0 0 100 100" class="progress-ring">
+                                <circle class="progress-ring-circle-bg" cx="50" cy="50" r="45"></circle>
+                                <circle class="progress-ring-circle" cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <div class="skill-percentage">78%</div>
+                        </div>
+                        <h3 class="skill-title">Quantum Data Folding</h3>
+                    </div>
+                </div>
+                
+                <!-- Lore entry triggered on scroll -->
+                <div class="lore-container">
+                    <div class="lore-entry">
+                        <h4 class="lore-title">From the Imperial Archives</h4>
+                        <p class="lore-content">The merging of Arrakeen technical prowess with ancient Bene Gesserit wisdom has created a new form of interface design. Those who master it can fold space between user and machine.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact: Quantum entanglement form -->
+        <section id="contact" class="contact-section">
+            <h2 class="section-title">Quantum Entanglement Transmission</h2>
+            <div class="contact-container">
+                <div class="frequency-modulator">
+                    <form id="contact-form" class="quantum-form">
+                        <div class="form-field">
+                            <label for="name">Designation</label>
+                            <input type="text" id="name" name="name" required>
+                            <div class="field-visualization"></div>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label for="email">Quantum Address</label>
+                            <input type="email" id="email" name="email" required>
+                            <div class="field-visualization"></div>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label for="message">Transmission Content</label>
+                            <textarea id="message" name="message" required></textarea>
+                            <div class="field-visualization textarea-viz"></div>
+                        </div>
+                        
+                        <button type="submit" class="submit-transmission">Initiate Transmission</button>
+                    </form>
+                </div>
+                
+                <div class="spice-container">
+                    <div id="spice-particle-emitter" aria-hidden="true"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="imperial-footer">
+        <div class="footer-content">
+            <div class="footer-glyph"></div>
+            <p>Imperial Design Archives | Memory Crystal 2025</p>
+            <div class="particle-boundary"></div>
+        </div>
+    </footer>
+
+    <!-- Error boundaries for legacy browser support -->
+    <script>
+        // MCP Operation: write_file for error boundaries [3]
+        window.addEventListener('error', function(e) {
+            console.warn('Component error detected:', e.message);
+            // Disable complex visualizations if errors occur
+            document.body.classList.add('fallback-mode');
+        });
+        
+        // Register service worker for offline support
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/serviceworker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
